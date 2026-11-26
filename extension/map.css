@@ -1,0 +1,26 @@
+:root { --bg:#fff; --fg:#1b1f24; --muted:#5f6b76; --line:#d5dbe1; --accent:#0b5cad; --panel:#f6f8fa; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#14181d; --fg:#e6eaee; --muted:#9aa6b2; --line:#2c343c; --accent:#4c9aef; --panel:#1b2128; }
+}
+* { box-sizing: border-box; }
+html, body { margin:0; height:100%; background:var(--bg); color:var(--fg); font:14px/1.4 system-ui, sans-serif; }
+body { display:flex; }
+#panel { width:320px; flex:none; padding:16px; overflow:auto; background:var(--panel); border-right:1px solid var(--line); }
+#map { flex:1; }
+h1 { font-size:18px; margin:0 0 12px; } h1 span { color:var(--muted); font-weight:400; font-size:13px; }
+section { margin-bottom:14px; }
+label { display:block; font-weight:600; margin-bottom:4px; }
+label.check { font-weight:400; display:flex; gap:6px; align-items:center; margin:2px 0; }
+.row { display:flex; gap:6px; } .row.sub { margin:4px 0 0 22px; }
+input[type=search], select { flex:1; min-width:0; padding:6px 8px; border:1px solid var(--line); border-radius:6px; background:var(--bg); color:var(--fg); }
+button { padding:6px 10px; border:1px solid var(--line); border-radius:6px; background:var(--bg); color:var(--fg); cursor:pointer; }
+button.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+button.ghost { margin-left:auto; }
+button.primary { width:100%; padding:10px; background:var(--accent); color:#fff; border-color:var(--accent); font-weight:600; }
+button:disabled { opacity:.5; cursor:wait; }
+.hint { color:var(--muted); font-size:12px; margin:6px 0 0; }
+#results { list-style:none; margin:4px 0 0; padding:0; }
+#results li { padding:5px 8px; cursor:pointer; border-radius:4px; } #results li:hover { background:var(--line); }
+#log { margin-top:10px; padding:8px; min-height:60px; max-height:220px; overflow:auto; white-space:pre-wrap; font:12px/1.4 ui-monospace, monospace; background:var(--bg); border:1px solid var(--line); border-radius:6px; }
+.leaflet-container { cursor:grab; } .drawing .leaflet-container, #map.drawing { cursor:crosshair; }
+@media (max-width:700px) { body { flex-direction:column-reverse; } #panel { width:100%; max-height:50vh; } }

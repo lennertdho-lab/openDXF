@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "openDXF - Belgium Lambert '72",
+  "version": "1.0.0",
+  "description": "Draw a contour and download gewestplan/plan de secteur/PRAS, flood layers, cadastral parcels and orthophotos for Flanders, Brussels and Wallonia as DXF in Lambert '72.",
+  "action": {
+    "default_title": "openDXF Vlaanderen"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "https://geo.api.vlaanderen.be/*",
+    "https://www.mercator.vlaanderen.be/*",
+    "https://inspirepub.waterinfo.be/*",
+    "https://server.arcgisonline.com/*",
+    "https://geoservices.wallonie.be/*",
+    "https://eservices.minfin.fgov.be/*",
+    "https://gis.urban.brussels/*",
+    "https://ows.environnement.brussels/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; img-src 'self' data: blob: https://server.arcgisonline.com https://geo.api.vlaanderen.be"
+  }
+}
