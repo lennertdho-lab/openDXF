@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>openDXF Vlaanderen</title>
+  <link rel="stylesheet" href="lib/leaflet.css">
+  <link rel="stylesheet" href="map.css">
+</head>
+<body>
+  <aside id="panel">
+    <h1>openDXF <span>Vlaanderen · L72</span></h1>
+
+    <section>
+      <label for="search">Zoek adres of plaats</label>
+      <div class="row"><input id="search" type="search" placeholder="Grote Markt Antwerpen"><button id="searchBtn">Zoek</button></div>
+      <ul id="results"></ul>
+    </section>
+
+    <section>
+      <label for="basemap">Basiskaart</label>
+      <select id="basemap">
+        <option value="esri-img">Esri World Imagery</option>
+        <option value="esri-street">Esri World Street Map</option>
+        <option value="geopunt">Geopunt GRB-basiskaart</option>
+      </select>
+    </section>
+
+    <section>
+      <label>Contour</label>
+      <div class="row">
+        <button id="drawPoly">Veelhoek</button>
+        <button id="drawRect">Rechthoek</button>
+        <button id="clear" class="ghost">Wis</button>
+      </div>
+      <p id="drawHint" class="hint">Kies een tekenmodus, of teken niets en klik direct op Download voor het zichtbare kaartbeeld.</p>
+      <p id="area" class="hint"></p>
+    </section>
+
+    <section>
+      <label>Lagen</label>
+      <label class="check"><input type="checkbox" id="l-gewestplan" checked> 00_LDH_Gewestplan</label>
+      <label class="check"><input type="checkbox" id="l-overstroming" checked> 00_LDH_Overstromingslagen</label>
+      <label class="check"><input type="checkbox" id="l-kadaster" checked> 00_LDH_Kadastrale grenzen</label>
+      <label class="check"><input type="checkbox" id="l-ortho" checked> 00_LDH_Orthofoto (xref)</label>
+      <div class="row sub">
+        <select id="orthoLayer" title="Jaargang orthofoto">
+          <option value="OMWRGB25VL">Ortho 2025</option>
+          <option value="OMWRGB24VL">Ortho 2024</option>
+          <option value="OMWRGB23VL">Ortho 2023</option>
+          <option value="OMWRGB22VL">Ortho 2022</option>
+          <option value="OMWRGB21VL">Ortho 2021</option>
+        </select>
+        <select id="orthoRes" title="Resolutie">
+          <option value="0.25">25 cm</option>
+          <option value="0.5">50 cm</option>
+          <option value="1">1 m</option>
+        </select>
+      </div>
+    </section>
+
+    <button id="download" class="primary">Download (.zip)</button>
+    <pre id="log" aria-live="polite"></pre>
+  </aside>
+  <div id="map"></div>
+
+  <script src="lib/leaflet.js"></script>
+  <script src="lib/proj4.js"></script>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
