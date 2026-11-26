@@ -167,12 +167,15 @@ async function download() {
       `openDXF Vlaanderen - ${new Date().toISOString()}\r\nCoordinatenstelsel: Belgian Lambert 72 (EPSG:31370), eenheid meter\r\n` +
       `00_LDH_Plan.dxf bevat de vectorlagen en een XREF naar 00_LDH_Orthofoto.dxf.\r\n` +
       `Houd alle bestanden samen in een map zodat de xref en de afbeeldingen (relatieve paden) gevonden worden.\r\n` +
-      `Bronnen: Digitaal Vlaanderen (GRB, Gewestplan via Mercator, OMW orthofoto), VMM Watertoets.\r\n` });
+      `Bronnen: Vlaanderen: Digitaal Vlaanderen (GRB, Gewestplan, OMW orthofoto), VMM Watertoets.\r\n` +
+      `Wallonie: SPW (Plan de secteur, aleas d'inondation, CadMap, orthophoto).\r\n` +
+      `Brussel: perspective.brussels (PRAS/GBP), Bruxelles Environnement (inondation 2025), FOD Financien (kadaster).\r\n` +
+      `Controleer de gebruiksvoorwaarden van elke dataset. Dit bestand heeft geen juridische waarde.\r\n` });
 
     log('Zip maken...');
     const blob = makeZip(files);
     const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob); a.download = `LDH_Vlaanderen_L72_${stamp()}.zip`;
+    a.href = URL.createObjectURL(blob); a.download = `LDH_Belgie_L72_${stamp()}.zip`;
     document.body.appendChild(a); a.click(); a.remove();
     log(`Klaar: ${files.length} bestanden, ${(blob.size / 1e6).toFixed(1)} MB.`);
   } catch (e) { log('FOUT: ' + e.message); console.error(e); }
